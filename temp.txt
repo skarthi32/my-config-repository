@@ -1,0 +1,3 @@
+aws s3 cp s3://awsexamplebucket/abc s3://awsexamplebucket/abc --recursive --sse aws:kms --sse-kms-key-id arn:aws:kms:us-west-2:111122223333:key/3aefc301-b7d2-4601-9298-5a854cf9999d
+
+aws s3api list-objects --bucket mybucket --query 'Contents[].{Key:Key}' --prefix testfolder/  --output text | xargs -n 1 -I targetobject aws s3api put-object-tagging --bucket mybucket --tagging 'TagSet=[{Key=colour,Value=blue}]' --key targetobject
